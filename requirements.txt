@@ -1,0 +1,4 @@
+Flask
+pypdf
+spacy
+scikit-learn

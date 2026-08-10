@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AI-Powered Resume Ranker</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>AI-Powered Resume Ranker</h1>
+
+        <p class="subtitle">
+            Rank resumes according to a job description using NLP and TF-IDF.
+        </p>
+
+        {% if error %}
+
+        <div class="error">
+            {{ error }}
+        </div>
+
+        {% endif %}
+
+        <form
+            action="/"
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            <label for="job_description">
+                Job Description
+            </label>
+
+            <textarea
+                id="job_description"
+                name="job_description"
+                placeholder="Enter or paste the job description here..."
+                required
+            ></textarea>
+
+
+            <label for="resumes">
+                Upload Resumes
+            </label>
+
+            <input
+                type="file"
+                id="resumes"
+                name="resumes"
+                accept=".pdf"
+                multiple
+                required
+            >
+
+            <p class="help">
+                You can select multiple PDF resumes.
+            </p>
+
+
+            <button type="submit">
+                Rank Resumes
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

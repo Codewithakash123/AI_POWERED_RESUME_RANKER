@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Resume Ranking Results</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Resume Ranking Results</h1>
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Rank</th>
+                    <th>Resume Name</th>
+                    <th>Score</th>
+                    <th>Status</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for item in results %}
+
+                <tr>
+
+                    <td>
+                        {{ loop.index }}
+                    </td>
+
+                    <td>
+                        {{ item.name }}
+                    </td>
+
+                    <td>
+                        {{ item.score }}%
+                    </td>
+
+                    <td>
+
+                        {% if item.score >= 90 %}
+                            <span class="best">Best</span>
+
+                        {% elif item.score >= 75 %}
+                            <span class="excellent">Excellent</span>
+
+                        {% elif item.score >= 50 %}
+                            <span class="good">Good</span>
+
+                        {% else %}
+                            <span class="average">Average</span>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+
+        <div class="buttons">
+
+            <a href="/">
+                <button>Rank More Resumes</button>
+            </a>
+
+            <a href="/download">
+                <button>Download Report</button>
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
